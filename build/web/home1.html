@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        <title>Responsive Registration Form </title> 
+    </head>
+    <body>
+        <div class="container">
+            <header>Registration</header>
+
+            <form  method="post" action="booking.jsp" name="myform" onsubmit="return validateform()">
+                <div class="form first">
+                    <div class="details personal">
+                        <span class="title">Personal Details</span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Full Name</label>
+                                <input type="text" name="pname" placeholder="Enter your name" >
+                                <span id="nameerror" style=" color: red;"></span>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="Enter your email" >
+                                <span id="mailerror" style=" color: red;"></span>
+                            </div>
+
+                            <div class="input-field">
+                                <label>City</label>
+                                <input type="text" name="city" placeholder="Enter your city" >
+                                <span id="cityerror" style=" color: red;"></span>
+                            </div>
+
+                            <div class="input-field">
+                                <label>State</label>
+                                <input type="text" name="state" placeholder="Enter your state" >
+                                <span id="stateerror" style=" color: red;"></span>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Mobile number</label>
+                                <input type="text" name="phone1" placeholder="Enter mobile number" >
+                                <span id="b" style=" color: red;"></span>
+
+                            </div>
+
+                            <div class="input-field">
+                                <label>mobile number(optional)</label>
+                                <input type="text" name="phone2" placeholder="Enter mobile number" >
+                            </div>
+
+                            <div class="input-field">
+                                <label>Date of visit</label>
+                                <input type="date" name="visit" >
+                                <span id="visiterror" style=" color: red;"></span>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Adhar number</label>
+                                <input type="text" name="adhar" placeholder="Enter Adhar number" >
+                                <span id="adharerror" style=" color: red;"></span>
+                            </div>
+
+                            <div class="input-field">
+                                <label> Total no. of members</label>
+                                <input type="number" id="mem" name="members" placeholder="enter total no. of members " onchange="getval()" >
+                                <span id="memerror" style=" color: red;"></span>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="details ID">
+                        <div class="paymode">
+                            <div class="mode1">
+                                <h3>Payment method 1:</h3><br>
+                                <p>Name of account: iskon management, pune</p>
+                                <p>Account number: 169491000023454</p>
+                                <p>Account type: saving</p>
+                                <p>Name of bank: Bank of India</p>
+                                <p>Branch: Ravet, Pune</p>
+                                <p>IFSC code: IOBA0006335</p>
+                            </div>
+                            <div class="mode2">
+                                <h3>Payment method 2:</h3>
+                                <img src="qrimage.png" alt="QR code">
+                            </div>
+                        </div>
+
+                        <h3>Total amount: <span id="total_amt"></span></h3> 
+                        <br>
+                        <i class="note">NOTE: pay on any of the above method and enter transaction id</i>
+                        <div class="input-field">
+                            <label class="tid">Transaction ID</label>
+                            <input type="text" placeholder="Enter Transaction ID" name="transid" ><br>
+                            <span id="terror" style=" color: red;"></span>
+                        </div><br>
+                        <input type="submit" value="Submit" class="btnText" name="signup">
+                    </div> 
+                </div>
+            </form>
+        </div>
+
+        <script>
+            function getval() {
+                var cal, totcal;
+                cal = document.getElementById('mem').value;
+                cal = parseInt(cal);
+                totcal = 100 * cal;
+                document.getElementById('total_amt').innerHTML = totcal + " /-";
+            }
+
+            function validateform() {
+                var name = document.myform.pname.value;
+                var email = document.myform.email.value;
+                var city = document.myform.city.value;
+                var state = document.myform.state.value;
+                var phone1 = document.myform.phone1.value;
+                var adhar = document.myform.adhar.value;
+                var visit = document.myform.visit.value;
+                var mem = document.myform.members.value;
+                var transid = document.myform.transid.value;
+
+                //name
+                if (name === null || name === "") {
+                    document.getElementById("nameerror").innerHTML = "Name can't be blank";
+                    return false;
+                } else {
+                    document.getElementById("nameerror").innerHTML = " ";
+                }
+
+                //email
+                if (email === null || email === "") {
+                    document.getElementById("mailerror").innerHTML = "Email can't be blank";
+                    return false;
+                } else {
+                    document.getElementById("mailerror").innerHTML = " ";
+                }
+
+                //city
+                if (city === null || city === "") {
+                    document.getElementById("cityerror").innerHTML = "City can't be blank";
+                    return false;
+                } else {
+                    document.getElementById("cityerror").innerHTML = " ";
+                }
+
+                //state
+                if (state === null || state === "") {
+                    document.getElementById("stateerror").innerHTML = "State can't be blank";
+                    return false;
+                } else {
+                    document.getElementById("stateerror").innerHTML = " ";
+                }
+
+                //phone
+                if (phone1.length !== 10) {
+                    document.getElementById("b").innerHTML = "Enter 10 digit phone number";
+                    return false;
+                } else if (phone1 === null || phone1 === "") {
+                    document.getElementById("b").innerHTML = "Phone can't be blank";
+                    return false;
+                } else {
+                    document.getElementById("b").innerHTML = " ";
+                }
+
+                //visit
+                if (visit === null || visit === "") {
+                    document.getElementById("visiterror").innerHTML = "Mention date of visit";
+                    return false;
+                } else {
+                    document.getElementById("visiterror").innerHTML = " ";
+                }
+
+                //adhar
+                if (adhar.length !== 12) {
+                    document.getElementById("adharerror").innerHTML = "Enter 12 digit phone number";
+                    return false;
+                } else if (adhar === null || adhar === "") {
+                    document.getElementById("adharerror").innerHTML = "Enter 12 digit phone number";
+                    return false;
+                } else {
+                    document.getElementById("adharerror").innerHTML = " ";
+                }
+
+                //members
+                if (mem === null || mem === "") {
+                    document.getElementById("memerror").innerHTML = "Members cant be null";
+                    return false;
+                } else {
+                    document.getElementById("memerror").innerHTML = " ";
+                }
+
+                //transaction
+                if (transid === "") {
+                    document.getElementById("terror").innerHTML = "Transaction ID can't be blank";
+                    return false;
+                } else {
+                    document.getElementById("terror").innerHTML = " ";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="charity_style.css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+        <title>Charity Form </title> 
+    </head>
+    <body>
+        <div class="container">
+            <header>Registration</header>
+
+            <form  method="post" action="donating.jsp" name="myform" onsubmit="return validateform()">
+                <div class="form first">
+                    <div class="details personal">
+                        <span class="title">Personal Details</span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Full Name</label>
+                                <input type="text" name="pname" placeholder="Enter your name" id="namefield">
+                                <span id="nameerror" class="errmark" style=" color: red;"></span>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="Enter your email" id="mailfield">
+                                <span id="emailerror" class="errmark" style=" color: red;"></span>
+                            </div>
+
+                            <div class="input-field">
+                                <label>City</label>
+                                <input type="text" name="city" placeholder="Enter your city" id="cityfield"  >
+                                <span id="cityerror" class="errmark" style=" color: red;"></span>
+                            </div>
+
+                            <div class="input-field">
+                                <label>State</label>
+                                <input type="text" name="state" placeholder="Enter your state" id="statefield" >
+                                <span id="stateerror"  class="errmark" style=" color: red;"></span>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Mobile number</label>
+                                <input type="text" name="phone1" placeholder="Enter mobile number" id="phone1field" >
+                                <span id="phoneerror" class="errmark" style=" color: red;"></span>
+                            </div>
+                            
+                            <div class="input-field">
+                                <label>Mobile number(optional)</label>
+                                <input type="text" name="phone2" placeholder="Enter mobile number"  >
+                            </div>
+                            
+                            <div class="input-field">
+                                <label>Donation amount</label>
+                                <input type="text" name="donamt" placeholder="Enter Donation amount" id="amtfield" >
+                                <span id="amterror" class="errmark" style=" color: red;"></span>
+                            </div>
+                            
+                            <div class="input-field">
+                                <label>Aadhar number</label>
+                                <input type="text" name="adhar" placeholder="Enter Adhar number" id="adharfield" >
+                                <span id="adharerror" class="errmark" style=" color: red;"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="details ID">
+                        <div class="paymode">
+                            <div class="mode1">
+                                <h3>Payment method 1:</h3><br>
+                                <p>Name of account: iskon management, pune</p>
+                                <p>Account number: 169491000023454</p>
+                                <p>Account type: saving</p>
+                                <p>Name of bank: Bank of India</p>
+                                <p>Branch: Ravet, Pune</p>
+                                <p>IFSC code: IOBA0006335</p>
+                            </div>
+                            <div class="mode2">
+                                <h3>Payment method 2:</h3>
+                                <img src="qrimage.png" alt="QR code">
+                            </div>
+
+                        </div>
+
+                        <br>
+                        <i class="note">NOTE: pay on any of the above method and enter transaction id</i>
+                        <div class="input-field">
+                            <label class="tid">Transaction ID</label>
+                            <input type="text" placeholder="Enter Transaction ID" name="transid" ><br>
+                            <span id="terror"  class="errmark" style=" color: red;"></span>
+                        </div><br>
+                        <input type="submit" value="Submit" class="btnText" name="signup">
+                    </div> 
+                </div>
+            </form>
+        </div>
+
+        <script>
+            var cal, totcal;
+            cal = document.getElementById("mem").value;
+            totcal = 100 * cal;
+            document.getElementById("total_Amt").innerHTML = "19";
+
+            function validateform() {
+                var name = document.myform.pname.value;
+                var email = document.myform.email.value;
+                var city = document.myform.city.value;
+                var state = document.myform.state.value;
+                var phone1 = document.myform.phone1.value;
+                var adhar = document.myform.adhar.value;
+                var donamt = document.myform.donamt.value;
+                var transid = document.myform.transid.value;
+
+                //name
+                if (name === null || name === "") {
+                    document.getElementById("nameerror").innerHTML = "Name can't be blank";
+
+                    return false;
+                } else {
+                    document.getElementById("nameerror").innerHTML = " ";
+                }
+
+                //email
+                if (email === null || email === "") {
+                    document.getElementById("emailerror").innerHTML = "Email can't be blank";
+                    return false;
+                } else {
+                    document.getElementById("emailerror").innerHTML = " ";
+                }
+
+                //city
+                if (city === null || city === "") {
+                    document.getElementById("cityerror").innerHTML = "City can't be blank";
+
+                    return false;
+                } else {
+                    document.getElementById("cityerror").innerHTML = " ";
+                }
+                
+                //state
+                if (state === null || state === "") {
+                    document.getElementById("stateerror").innerHTML = "State can't be blank";
+
+                    return false;
+                } else {
+                    document.getElementById("stateerror").innerHTML = " ";
+                }
+                
+                //phone
+                if (phone1.length !== 10) {
+                    document.getElementById("phoneerror").innerHTML = "Enter 10 digit phone number";
+                    return false;
+                } else if (phone1 === null || phone1 === "") {
+                    document.getElementById("phoneerror").innerHTML = "Phone can't be blank";
+                    return false;
+                } else {
+                    document.getElementById("phoneerror").innerHTML = " ";
+                }
+
+                //amount
+                if (donamt === null || donamt === "") {
+                    document.getElementById("amterror").innerHTML = "Amount can't be blank";
+                    return false;
+                } else {
+                    document.getElementById("amterror").innerHTML = " ";
+                }
+                
+                //adhar
+                if (adhar.length !== 12) { 
+                    document.getElementById("adharerror").innerHTML = "Enter 12 digit Aadhar number";
+                    return false;
+                } else if (adhar === null || adhar === "") {
+                    document.getElementById("adharerror").innerHTML = "Enter 12 digit Aadhar number";
+                    return false;
+                } else {
+                    document.getElementById("adharerror").innerHTML = " ";
+                }
+
+                //transaction
+                if (transid === "" || transid === null) { 
+                    document.getElementById("terror").innerHTML = "Transaction ID can't be blank";
+                    return false;
+                } else {
+                    document.getElementById("terror").innerHTML = " ";
+                }
+            }
+        </script>
+    </body>
+</html>

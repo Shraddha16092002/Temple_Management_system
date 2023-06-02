@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Photo Gallery</title>
+        <style>
+            * {
+                box-sizing: border-box;
+
+            }
+
+            body {
+                margin: 0;
+                font-family: Arial;
+
+            }
+
+            .header {
+                text-align: center;
+                padding: 32px;
+                size: 900px;
+            }
+
+            .row {
+                display: -ms-flexbox; /* IE10 */
+                display: flex;
+                -ms-flex-wrap: wrap; /* IE10 */
+                flex-wrap: wrap;
+                padding: 0 4px;
+            }
+
+            /* Create four equal columns that sits next to each other */
+            .column {
+                -ms-flex: 25%; /* IE10 */
+                flex: 25%;
+                max-width: 25%;
+                padding: 0 4px;
+            }
+
+            .column img {
+                margin-top: 8px;
+                vertical-align: middle;
+                width: 100%;
+            }
+
+            /* Responsive layout - makes a two column-layout instead of four columns */
+            @media screen and (max-width: 800px) {
+                .column {
+                    -ms-flex: 50%;
+                    flex: 50%;
+                    max-width: 50%;
+                }
+            }
+
+            /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+            @media screen and (max-width: 600px) {
+                .column {
+                    -ms-flex: 100%;
+                    flex: 100%;
+                    max-width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="header">
+            <u style="text-decoration-color: #FFA500 ;"><h1 style="font-size: 40px;">Photo Gallery</h1></u>
+        </div>
+
+        <!-- Photo Grid -->
+        <div class="row"> 
+            <div class="column">
+                <img src="img1.jpeg" style="width:100%">
+                <img src="img2.jpeg" style="width:100%">
+                <img src="img3.jpg" style="width:100%">
+
+            </div>
+            <div class="column">
+                <img src="img4.jpg" style="width:100%">
+                <img src="img6.jpeg" style="width:100%">
+                <img src="img7.jpeg" style="width:100%; height: 36%;">
+            </div>  
+            <div class="column">
+                <img src="img8.jpeg" style="width:100%">
+                <img src="img9.jpeg" style="width:100% ; height: 32%;">
+            </div>
+            <div class="column">
+                <img src="img10.jpeg" style="width:100%">
+                <img src="img11.jpg" style="width:100%">
+                <img src="img5.jpg" style="width:100% ; height: 38%;">
+
+            </div>
+        </div>
+
+    </body>
+</html>
